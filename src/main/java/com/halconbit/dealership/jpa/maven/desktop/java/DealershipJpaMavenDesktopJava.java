@@ -1,5 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java;
 
+import com.halconbit.dealership.jpa.maven.desktop.java.gui.Main;
+
 /**
  * @author Brayan Esteves
  * Challenge:
@@ -27,6 +29,10 @@ package com.halconbit.dealership.jpa.maven.desktop.java;
 public class DealershipJpaMavenDesktopJava {
 
     public static void main(String[] args) {
+        
+        Main main = new Main();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
         
     }
 }
