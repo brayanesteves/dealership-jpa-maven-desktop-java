@@ -1,7 +1,16 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.logic;
 
-public class Automobile {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Automobile implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int    id;
     private String model;
     private String brand;
