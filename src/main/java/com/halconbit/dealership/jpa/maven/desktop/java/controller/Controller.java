@@ -28,5 +28,9 @@ public class Controller {
     public List<Automobile> fetchingAutomobiles() {
         return this.persistence.fetchingAutomobiles();
     }
+
+    public Automobile fetchingAutomobile(int id) {
+        return this.persistence.fetchingAutomobile(id);
+    }
     
 }

@@ -18,5 +18,9 @@ public class Persistence {
     public List<Automobile> fetchingAutomobiles() {
         return this.automobileJpaController.findAutomobileEntities();
     }
+
+    public Automobile fetchingAutomobile(int id) {
+        return this.automobileJpaController.findAutomobile(id);
+    }
     
 }

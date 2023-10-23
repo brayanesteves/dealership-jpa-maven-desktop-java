@@ -3,6 +3,8 @@ package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -155,9 +157,42 @@ public class Read extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        
+        // I check that the table is not empty.
+        if(this.tableAutomobile.getRowCount() > 0) {
+            // I check that a record has been selected.
+            /**
+             * -1 = No selected row
+             */
+            if(this.tableAutomobile.getSelectedRow() != -1) {
+                /**
+                 * <b>1</b> is <i>Column</i> <b>1</b> of <b>Customer number</b>
+                 */
+                int id    = Integer.parseInt(String.valueOf(this.tableAutomobile.getValueAt(this.tableAutomobile.getSelectedRow(), 1)));
+                
+                Edit edit = new Edit(id);
+                edit.setVisible(true);
+                edit.setLocationRelativeTo(null);
+                
+                this.dispose();
+                
+                loadTable();
+                
+            } else {
+                showMessage("Not selected data at update.", JOptionPane.WARNING_MESSAGE, "Not selected data at update.");
+            }
+        } else {
+            showMessage("Not exists data.", JOptionPane.ERROR_MESSAGE, "Not exists data.");
+        }        
     }//GEN-LAST:event_buttonEditActionPerformed
 
+    public void showMessage(String message, int type, String title) {
+        JOptionPane optionPane = new JOptionPane(message);
+        optionPane.setMessageType(type);
+        JDialog dialog = optionPane.createDialog(title);
+        dialog.setAlwaysOnTop(false);
+        dialog.setVisible(true);
+    }
+    
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonDeleteActionPerformed
