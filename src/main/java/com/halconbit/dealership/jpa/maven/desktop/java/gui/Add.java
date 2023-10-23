@@ -1,6 +1,8 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -202,6 +204,13 @@ public class Add extends javax.swing.JFrame {
         int    numberOfDoors = Integer.parseInt(this.textfieldNumberOfDoors.getText());
         
         this.controller.AddAutomobile(model, brand, engine, color, license, numberOfDoors);
+        
+        JOptionPane optionPane = new JOptionPane("Save successful");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog     dialog     =     optionPane.createDialog("Save Successful");
+        dialog.setAlwaysOnTop(false);
+        dialog.setVisible(true);
+        
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
