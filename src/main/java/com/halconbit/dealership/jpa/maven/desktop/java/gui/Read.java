@@ -1,12 +1,21 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
+import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Brayan Esteves
  */
 public class Read extends javax.swing.JFrame {
-
+    
+    private Controller controller = null;
+    private int        position   = 1;
+    
     public Read() {
+        this.controller = new Controller();
         initComponents();
     }
 
@@ -24,6 +33,11 @@ public class Read extends javax.swing.JFrame {
         buttonDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         labelTitle.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         labelTitle.setText("Read Data");
@@ -141,12 +155,16 @@ public class Read extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        loadTable();
+    }//GEN-LAST:event_formWindowOpened
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonDelete;
@@ -158,4 +176,36 @@ public class Read extends javax.swing.JFrame {
     private javax.swing.JPanel panelTable;
     private javax.swing.JTable tableAutomobile;
     // End of variables declaration//GEN-END:variables
+
+    private void loadTable() {
+        // Define the model we want the table to have.
+        DefaultTableModel defaultTableModel = new DefaultTableModel() {
+            // Make rows and columns non-editable
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        // We set the column names.
+        String titles[] = {"#", "Id", "Model", "Brand", "Engine", "Color", "License", "Number of doors"};
+        defaultTableModel.setColumnIdentifiers(titles);
+        
+        // Loading data from the database.
+        List<Automobile> listAutomobiles = this.controller.fetchingAutomobiles();
+        
+        // Iterate through the list and fetch each element in the table.
+        if(listAutomobiles != null) {
+            // Set variable.
+            this.position = 1;
+            for(Automobile automobile : listAutomobiles) {
+                Object[] object = {this.position, automobile.getId(), automobile.getModel(), automobile.getBrand(), automobile.getEngine(), automobile.getColor(), automobile.getLicense(), automobile.getNumberOfDoors()};
+                this.position++;
+                
+                defaultTableModel.addRow(object);
+            }
+        }
+        
+        this.tableAutomobile.setModel(defaultTableModel);
+    }
 }

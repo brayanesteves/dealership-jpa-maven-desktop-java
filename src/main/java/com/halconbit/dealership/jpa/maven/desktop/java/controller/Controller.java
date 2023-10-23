@@ -2,6 +2,7 @@ package com.halconbit.dealership.jpa.maven.desktop.java.controller;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
 import com.halconbit.dealership.jpa.maven.desktop.java.persistence.Persistence;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,10 @@ public class Controller {
         automobile.setNumberOfDoors(numberOfDoors);
         
         this.persistence.addAutomobile(automobile);
+    }
+
+    public List<Automobile> fetchingAutomobiles() {
+        return this.persistence.fetchingAutomobiles();
     }
     
 }
