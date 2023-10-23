@@ -205,7 +205,11 @@ public class Add extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
-        // TODO add your handling code here:
+        this.textfieldModel.setText("");
+        this.textfieldBrand.setText("");
+        this.textfieldEngine.setText("");
+        this.textfieldColor.setText("");
+        this.textfieldLicense.setText("");
     }//GEN-LAST:event_buttonCleanActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
