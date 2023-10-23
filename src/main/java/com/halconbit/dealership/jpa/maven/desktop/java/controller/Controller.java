@@ -46,5 +46,9 @@ public class Controller {
         this.persistence.updateAutomobile(automobile);
         
     }
+
+    public void deleteAutomobile(int id) {
+        this.persistence.deleteAutomobile(id);
+    }
     
 }

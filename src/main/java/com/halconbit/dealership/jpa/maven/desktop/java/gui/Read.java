@@ -194,7 +194,27 @@ public class Read extends javax.swing.JFrame {
     }
     
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
-        // TODO add your handling code here:
+        // I check that the table is not empty.
+        if(this.tableAutomobile.getRowCount() > 0) {
+            // I check that a record has been selected.
+            /**
+             * -1 = No selected row
+             */
+            if(this.tableAutomobile.getSelectedRow() != -1) {
+                /**
+                 * <b>1</b> is <i>Column</i> <b>1</b> of <b>Customer number</b>
+                 */
+                int id = Integer.parseInt(String.valueOf(this.tableAutomobile.getValueAt(this.tableAutomobile.getSelectedRow(), 1)));
+                this.controller.deleteAutomobile(id);
+                loadTable();
+                showMessage("Delete successful.", JOptionPane.INFORMATION_MESSAGE, "Delete Successful.");
+                
+            } else {
+                showMessage("Not selected data at delete.", JOptionPane.WARNING_MESSAGE, "Not selected data at delete.");
+            }
+        } else {
+            showMessage("Not exists data.", JOptionPane.ERROR_MESSAGE, "Not exists data.");
+        }
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
