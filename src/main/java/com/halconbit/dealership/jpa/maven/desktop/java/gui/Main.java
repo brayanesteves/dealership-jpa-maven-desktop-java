@@ -125,7 +125,11 @@ public class Main extends JFrame {
     }//GEN-LAST:event_buttonExitActionPerformed
 
     private void buttonReadEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadEditDeleteActionPerformed
-        // TODO add your handling code here:
+        
+        Read read = new Read();
+        read.setVisible(true);
+        read.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_buttonReadEditDeleteActionPerformed
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
