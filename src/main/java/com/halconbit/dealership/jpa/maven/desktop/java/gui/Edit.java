@@ -198,7 +198,22 @@ public class Edit extends javax.swing.JFrame {
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         
+        String model         =                  this.textfieldModel.getText();
+        String brand         =                  this.textfieldBrand.getText();
+        String engine        =                  this.textfieldEngine.getText();
+        String color         =                  this.textfieldColor.getText();
+        String license       =                  this.textfieldLicense.getText();
+        int    numberOfDoors = Integer.parseInt(this.textfieldNumberOfDoors.getText());        
         
+        this.controller.updateAutomobile(this.automobile, model, brand, engine, color, license, numberOfDoors);
+        
+        showMessage("Update successful.", JOptionPane.INFORMATION_MESSAGE, "Update Successful.");
+                
+        Read read = new Read();
+        read.setVisible(true);
+        read.setLocationRelativeTo(null);
+        
+        this.dispose();
         
     }//GEN-LAST:event_buttonEditActionPerformed
 
@@ -208,6 +223,7 @@ public class Edit extends javax.swing.JFrame {
         this.textfieldEngine.setText("");
         this.textfieldColor.setText("");
         this.textfieldLicense.setText("");
+        this.textfieldNumberOfDoors.setText("");
     }//GEN-LAST:event_buttonCleanActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -242,5 +258,13 @@ public class Edit extends javax.swing.JFrame {
         this.textfieldLicense.setText(this.automobile.getLicense());        
         this.textfieldNumberOfDoors.setText(String.valueOf(this.automobile.getNumberOfDoors()));
         
+    }
+    
+    private void showMessage(String message, int type, String title) {
+        JOptionPane optionPane = new JOptionPane(message);
+        optionPane.setMessageType(type);
+        JDialog dialog = optionPane.createDialog(title);
+        dialog.setAlwaysOnTop(false);
+        dialog.setVisible(true);
     }
 }

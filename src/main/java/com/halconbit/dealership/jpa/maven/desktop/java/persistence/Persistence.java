@@ -2,6 +2,8 @@ package com.halconbit.dealership.jpa.maven.desktop.java.persistence;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +23,14 @@ public class Persistence {
 
     public Automobile fetchingAutomobile(int id) {
         return this.automobileJpaController.findAutomobile(id);
+    }
+
+    public void updateAutomobile(Automobile automobile) {
+        try {
+            this.automobileJpaController.edit(automobile);
+        } catch (Exception ex) {
+            Logger.getLogger(Persistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

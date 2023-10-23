@@ -219,6 +219,7 @@ public class Add extends javax.swing.JFrame {
         this.textfieldEngine.setText("");
         this.textfieldColor.setText("");
         this.textfieldLicense.setText("");
+        this.textfieldNumberOfDoors.setText("");
     }//GEN-LAST:event_buttonCleanActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
