@@ -86,9 +86,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buttonAdd1" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
-                          <Component id="buttonReadEditDelete1" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
-                          <Component id="buttonExit1" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="buttonAdd" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="buttonReadEditDelete" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="buttonExit" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                   </Group>
@@ -98,18 +98,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonAdd1" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="buttonAdd" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonReadEditDelete1" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="buttonReadEditDelete" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonExit1" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="buttonExit" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="buttonAdd1">
+            <Component class="javax.swing.JButton" name="buttonAdd">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
               </Properties>
@@ -117,7 +117,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="buttonReadEditDelete1">
+            <Component class="javax.swing.JButton" name="buttonReadEditDelete">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Read, Edit and Delete"/>
               </Properties>
@@ -125,7 +125,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonReadEditDeleteActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="buttonExit1">
+            <Component class="javax.swing.JButton" name="buttonExit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
