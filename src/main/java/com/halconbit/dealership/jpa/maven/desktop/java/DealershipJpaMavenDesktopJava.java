@@ -1,5 +1,6 @@
 package com.halconbit.dealership.jpa.maven.desktop.java;
 
+import com.halconbit.dealership.jpa.maven.desktop.java.gui.Login;
 import com.halconbit.dealership.jpa.maven.desktop.java.gui.Main;
 
 /**
@@ -30,9 +31,9 @@ public class DealershipJpaMavenDesktopJava {
 
     public static void main(String[] args) {
         
-        Main main = new Main();
-        main.setVisible(true);
-        main.setLocationRelativeTo(null);
+        Login login = new Login();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
         
     }
 }
