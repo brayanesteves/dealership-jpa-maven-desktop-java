@@ -1,6 +1,6 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.persistence;
 
-import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import com.halconbit.dealership.jpa.maven.desktop.java.persistence.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -16,13 +16,13 @@ import javax.persistence.criteria.Root;
  *
  * @author Brayan Esteves
  */
-public class AutomobileJpaController implements Serializable {
+public class UserJpaController implements Serializable {
 
-    public AutomobileJpaController(EntityManagerFactory emf) {
+    public UserJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
-    public AutomobileJpaController() {
+    public UserJpaController() {
         this.emf = Persistence.createEntityManagerFactory("DealershipPersistenceUnit");
     }
     
@@ -32,12 +32,12 @@ public class AutomobileJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Automobile automobile) {
+    public void create(User user) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(automobile);
+            em.persist(user);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -46,19 +46,19 @@ public class AutomobileJpaController implements Serializable {
         }
     }
 
-    public void edit(Automobile automobile) throws NonexistentEntityException, Exception {
+    public void edit(User user) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            automobile = em.merge(automobile);
+            user = em.merge(user);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = automobile.getId();
-                if (findAutomobile(id) == null) {
-                    throw new NonexistentEntityException("The automobile with id " + id + " no longer exists.");
+                int id = user.getId();
+                if (findUser(id) == null) {
+                    throw new NonexistentEntityException("The user with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -74,14 +74,14 @@ public class AutomobileJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Automobile automobile;
+            User user;
             try {
-                automobile = em.getReference(Automobile.class, id);
-                automobile.getId();
+                user = em.getReference(User.class, id);
+                user.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The automobile with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
-            em.remove(automobile);
+            em.remove(user);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -90,19 +90,19 @@ public class AutomobileJpaController implements Serializable {
         }
     }
 
-    public List<Automobile> findAutomobileEntities() {
-        return findAutomobileEntities(true, -1, -1);
+    public List<User> findUserEntities() {
+        return findUserEntities(true, -1, -1);
     }
 
-    public List<Automobile> findAutomobileEntities(int maxResults, int firstResult) {
-        return findAutomobileEntities(false, maxResults, firstResult);
+    public List<User> findUserEntities(int maxResults, int firstResult) {
+        return findUserEntities(false, maxResults, firstResult);
     }
 
-    private List<Automobile> findAutomobileEntities(boolean all, int maxResults, int firstResult) {
+    private List<User> findUserEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Automobile.class));
+            cq.select(cq.from(User.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -114,20 +114,20 @@ public class AutomobileJpaController implements Serializable {
         }
     }
 
-    public Automobile findAutomobile(int id) {
+    public User findUser(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Automobile.class, id);
+            return em.find(User.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getAutomobileCount() {
+    public int getUserCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Automobile> rt = cq.from(Automobile.class);
+            Root<User> rt = cq.from(User.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
