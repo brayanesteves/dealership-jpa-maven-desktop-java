@@ -1,5 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
+import javax.swing.JFrame;
+
 /**
  * @author Brayan Esteves
  * Challenge:
@@ -38,7 +40,7 @@ package com.halconbit.dealership.jpa.maven.desktop.java.gui;
  * se puede utilizar base de datos para los datos de <b>login</b> como así también
  * datos lógicos (Dependiendo de los conocimientos que tengas).
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends JFrame {
 
     public Login() {
         initComponents();
@@ -54,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         labelUsername = new javax.swing.JLabel();
         labelPassword = new javax.swing.JLabel();
         textfieldUsername = new javax.swing.JTextField();
-        passwordFieldPassword = new javax.swing.JPasswordField();
+        passwordfieldPassword = new javax.swing.JPasswordField();
         separatorNumberOne = new javax.swing.JSeparator();
         separatorNumberTwo = new javax.swing.JSeparator();
         panelActions = new javax.swing.JPanel();
@@ -85,7 +87,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(labelPassword))
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordFieldPassword)
+                    .addComponent(passwordfieldPassword)
                     .addComponent(textfieldUsername))
                 .addContainerGap())
         );
@@ -99,7 +101,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPassword)
-                    .addComponent(passwordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordfieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -108,6 +110,11 @@ public class Login extends javax.swing.JFrame {
         separatorNumberTwo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         buttonClean.setText("Clean");
+        buttonClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCleanActionPerformed(evt);
+            }
+        });
 
         buttonLogin.setText("Login");
 
@@ -213,6 +220,12 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
+        this.textfieldUsername.setText("");
+        this.passwordfieldPassword.setText("");
+        this.textareaMessage.setText("");
+    }//GEN-LAST:event_buttonCleanActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClean;
     private javax.swing.JButton buttonLogin;
@@ -224,7 +237,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel panelContent;
     private javax.swing.JPanel panelForm;
     private javax.swing.JPanel panelMain;
-    private javax.swing.JPasswordField passwordFieldPassword;
+    private javax.swing.JPasswordField passwordfieldPassword;
     private javax.swing.JSeparator separatorNumberOne;
     private javax.swing.JSeparator separatorNumberTwo;
     private javax.swing.JTextArea textareaMessage;
