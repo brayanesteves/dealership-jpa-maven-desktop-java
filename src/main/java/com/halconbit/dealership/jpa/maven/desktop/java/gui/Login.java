@@ -141,6 +141,7 @@ public class Login extends JFrame {
 
         panelContent.setToolTipText("");
 
+        textareaMessage.setEditable(false);
         textareaMessage.setColumns(20);
         textareaMessage.setRows(5);
         jScrollPane1.setViewportView(textareaMessage);
