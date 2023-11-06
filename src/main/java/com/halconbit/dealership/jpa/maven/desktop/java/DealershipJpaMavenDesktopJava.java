@@ -1,7 +1,6 @@
 package com.halconbit.dealership.jpa.maven.desktop.java;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.gui.Login;
-import com.halconbit.dealership.jpa.maven.desktop.java.gui.Main;
 
 /**
  * @author Brayan Esteves
