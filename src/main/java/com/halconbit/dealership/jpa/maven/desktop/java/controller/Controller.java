@@ -1,6 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.controller;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import com.halconbit.dealership.jpa.maven.desktop.java.persistence.Persistence;
 import java.util.List;
 
@@ -49,6 +50,27 @@ public class Controller {
 
     public void deleteAutomobile(int id) {
         this.persistence.deleteAutomobile(id);
+    }
+
+    public String validateUser(String user, String password) {
+        
+        String message = "";
+        
+        List<User> listUsers = this.persistence.fetchingUsers();
+        for(User users : listUsers) {
+            if(users.getUsername().equals(user)) {
+                if(users.getPassword().equals(password)) {
+                    message = "Exist.";
+                } else {
+                    message = "Password incorrect.";
+                }
+            } else {
+                message = "User not exist.";
+            }
+        }
+        
+        return message;
+        
     }
     
 }

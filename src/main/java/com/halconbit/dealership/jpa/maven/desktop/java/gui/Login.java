@@ -1,5 +1,6 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
+import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import javax.swing.JFrame;
 
 /**
@@ -117,6 +118,11 @@ public class Login extends JFrame {
         });
 
         buttonLogin.setText("Login");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelActionsLayout = new javax.swing.GroupLayout(panelActions);
         panelActions.setLayout(panelActionsLayout);
@@ -226,6 +232,27 @@ public class Login extends JFrame {
         this.passwordfieldPassword.setText("");
         this.textareaMessage.setText("");
     }//GEN-LAST:event_buttonCleanActionPerformed
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        
+        Controller controller = new Controller();
+        
+        String user           = this.textfieldUsername.getText();
+        String password       = this.passwordfieldPassword.getText();
+        
+        String message        = controller.validateUser(user, password);
+        
+        if(message.equals("Exist.")) {
+            Main main = new Main();
+            main.setVisible(true);
+            main.setLocationRelativeTo(null);
+            
+            this.textareaMessage.setText(message);
+        } else {
+            this.textareaMessage.setText(message);
+        }
+        
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClean;

@@ -1,6 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.persistence;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import com.halconbit.dealership.jpa.maven.desktop.java.persistence.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,7 +13,8 @@ import java.util.logging.Logger;
  */
 public class Persistence {
     
-    AutomobileJpaController automobileJpaController = new AutomobileJpaController();
+    private AutomobileJpaController automobileJpaController = new AutomobileJpaController();
+    private UserJpaController       userJpaController       = new UserJpaController();
 
     public void addAutomobile(Automobile automobile) {
         this.automobileJpaController.create(automobile);
@@ -40,6 +42,10 @@ public class Persistence {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(Persistence.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public List<User> fetchingUsers() {
+        return this.userJpaController.findUserEntities();
     }
     
 }
