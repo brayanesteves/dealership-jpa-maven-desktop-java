@@ -68,7 +68,6 @@ public class Controller {
                 }
             } else {
                 message = "User not exist.";
-                return message;
             }
         }
         
