@@ -61,11 +61,14 @@ public class Controller {
             if(users.getUsername().equals(user)) {
                 if(users.getPassword().equals(password)) {
                     message = "Exist.";
+                    return message;
                 } else {
                     message = "Password incorrect.";
+                    return message;
                 }
             } else {
                 message = "User not exist.";
+                return message;
             }
         }
         
