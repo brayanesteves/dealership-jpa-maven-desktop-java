@@ -22,11 +22,11 @@ public class UserJpaController implements Serializable {
         this.emf = emf;
     }
     
+    private EntityManagerFactory emf = null;
+    
     public UserJpaController() {
         this.emf = Persistence.createEntityManagerFactory("DealershipPersistenceUnit");
     }
-    
-    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
