@@ -29,7 +29,7 @@ public class UserJpaController implements Serializable {
     }
 
     public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+        return this.emf.createEntityManager();
     }
 
     public void create(User user) {

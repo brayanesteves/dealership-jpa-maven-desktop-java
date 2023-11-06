@@ -29,7 +29,7 @@ public class AutomobileJpaController implements Serializable {
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+        return this.emf.createEntityManager();
     }
 
     public void create(Automobile automobile) {
