@@ -15,7 +15,9 @@ public class Persistence {
     
     private AutomobileJpaController automobileJpaController = new AutomobileJpaController();
     private UserJpaController       userJpaController       = new UserJpaController();
-
+    private RolJpaController        rolJpaController        = new RolJpaController();
+    
+    // <AUTOMOBILE> //
     public void addAutomobile(Automobile automobile) {
         this.automobileJpaController.create(automobile);
     }
@@ -43,9 +45,12 @@ public class Persistence {
             Logger.getLogger(Persistence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    // <AUTOMOBILE> //
+    
+    // <USER> //
     public List<User> fetchingUsers() {
         return this.userJpaController.findUserEntities();
     }
+    // </USER> //
     
 }
