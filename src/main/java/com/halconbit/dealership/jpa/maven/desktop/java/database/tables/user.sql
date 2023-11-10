@@ -1,6 +1,9 @@
 CREATE TABLE IF NOT EXISTS `dealership`.`USER` (
-    `ID`       INT    (255) NOT NULL AUTO_INCREMENT COMMENT '',
-    `USERNAME` VARCHAR(10)  NOT NULL                COMMENT '',
-    `PASSWORD` VARCHAR(20)  NOT NULL                COMMENT '',
-    PRIMARY KEY (`ID`)
+    `ID`        INT    (255)         NOT NULL AUTO_INCREMENT COMMENT '',
+    `USERNAME`  VARCHAR(10)          NOT NULL                COMMENT '',
+    `PASSWORD`  VARCHAR(20)          NOT NULL                COMMENT '',
+    `FK_ID_ROL` INT    (255) DEFAULT     NULL,
+    PRIMARY KEY (`ID`),
+    KEY `FK_USER_FK_ID_ROL` (`FK_ID_ROL`),
+    CONSTRAINT `FK_USER_FK_ID_ROL` FOREIGN KEY (`FK_ID_ROL`) REFERENCES `ROL` (`ID`)
 ) ENGINE='InnoDB' DEFAULT CHARSET='utf8' COLLATE='utf8_bin' COMMENT='';
