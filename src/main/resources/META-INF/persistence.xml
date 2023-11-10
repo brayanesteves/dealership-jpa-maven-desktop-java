@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile</class>
     <class>com.halconbit.dealership.jpa.maven.desktop.java.logic.User</class>
+    <class>com.halconbit.dealership.jpa.maven.desktop.java.logic.Rol</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dealership?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
