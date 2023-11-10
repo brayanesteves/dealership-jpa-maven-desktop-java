@@ -1,6 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
+import com.halconbit.dealership.jpa.maven.desktop.java.util.HandleLogin;
 import javax.swing.JFrame;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.JFrame;
  * 2) At the same time, a login button and another to clear the data are needed.
  *    By clicking the login button, it must verify if the user and password are correct;
  *    if so, it must manifest a greeting <b>"Welcome user"</ b> in a text area
- *    (Where usario must be replaced by the name of the user).
+ *    (Where user must be replaced by the name of the user).
  * 3) If the user is incorrect, it must make that situation known.
  * 4) Establish the following as correct user and password:
  *    User: admin
@@ -31,7 +32,7 @@ import javax.swing.JFrame;
  * 2) Al mismo tiempo, se necesita un botón de login y otro para limpiar los datos.
  *    Al hacer click en el botón de login, debe verificar si el usuario y contraseña
  *    son correctos; de ser así, debe manifestar un saludo <b>"Bienvenido usuario"</b>
- *    en un área de texto (Donde usario debe ser reemplazado por el nombre del usario).
+ *    en un área de texto (Donde usuario debe ser reemplazado por el nombre del usario).
  * 3) Si el usuario es incorrecto, debe dar a conocer dicha situación.
  * 4) Establecer como usuario y contraseña correctos los siguientes:
  *    Usuario: admin
@@ -42,9 +43,12 @@ import javax.swing.JFrame;
  * datos lógicos (Dependiendo de los conocimientos que tengas).
  */
 public class Login extends JFrame {
-
-    public Login() {
+    
+    private HandleLogin handLogin;
+    
+    public Login() {        
         initComponents();
+        this.handLogin = new HandleLogin();
     }
 
     @SuppressWarnings("unchecked")
@@ -240,16 +244,10 @@ public class Login extends JFrame {
         String user           = this.textfieldUsername.getText();
         String password       = this.passwordfieldPassword.getText();
         
-        String message        = controller.validateUser(user, password);
+        int    status        = this.handLogin.validateUserWithRol(user, password);
         
-        if(message.equals("Exist.")) {
-            Main main = new Main();
-            main.setVisible(true);
-            main.setLocationRelativeTo(null);
-            
-            this.textareaMessage.setText(message);
-        } else {
-            this.textareaMessage.setText(message);
+        if(status == 0) {
+            this.textareaMessage.setText("User or password incorrect.");
         }
         
     }//GEN-LAST:event_buttonLoginActionPerformed

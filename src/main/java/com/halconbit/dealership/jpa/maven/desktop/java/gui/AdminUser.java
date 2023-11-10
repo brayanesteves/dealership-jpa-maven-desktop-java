@@ -1,5 +1,6 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
+import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import javax.swing.JFrame;
 
 /**
@@ -53,10 +54,16 @@ import javax.swing.JFrame;
  * podés hacerla en cualquier lenguaje que quieras.
  */
 public class AdminUser extends JFrame {
-
+    
+    private Controller controller;
     
     public AdminUser() {
         initComponents();
+    }
+
+    public AdminUser(Controller controller) {
+        initComponents();
+        this.controller = controller;
     }
 
     

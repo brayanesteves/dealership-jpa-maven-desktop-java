@@ -75,4 +75,49 @@ public class Controller {
         
     }
     
+    public boolean validateUserWithRol(String user, String password) {
+        
+        List<User> listUsers = this.persistence.fetchingUsers();
+        for(User users : listUsers) {
+            if(users.getUsername().equals(user)) {
+                if(users.getPassword().equals(password)) {
+                    return true;
+                } else {                    
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        
+        return false;
+        
+    }
+    
+    public User validateUserWithRolAndObjectUser(String user, String password) {
+        
+        User userSingle      = null;
+        List<User> listUsers = this.persistence.fetchingUsers();
+        for(User users : listUsers) {
+            if(users.getUsername().equals(user)) {
+                if(users.getPassword().equals(password)) {
+                    userSingle = users;
+                    return userSingle;
+                } else {                    
+                    userSingle = users;
+                    return userSingle;
+                }
+            } else {
+                userSingle = null;
+            }
+        }
+        
+        return userSingle;
+        
+    }
+
+    public String validateUserWithRolByName(String user) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }

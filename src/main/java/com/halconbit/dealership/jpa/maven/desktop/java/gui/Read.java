@@ -2,6 +2,7 @@ package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -14,11 +15,23 @@ import javax.swing.table.DefaultTableModel;
 public class Read extends javax.swing.JFrame {
     
     private Controller controller = null;
+    private User       user;
     private int        position   = 1;
     
     public Read() {
         this.controller = new Controller();
         initComponents();
+    }
+
+    public Read(Controller controller) {
+        this.controller = controller;
+        initComponents();
+    }
+
+    public Read(Controller controller, User userSingle) {
+        initComponents();
+        this.controller = controller;
+        this.user       = userSingle;        
     }
 
     @SuppressWarnings("unchecked")
@@ -219,6 +232,16 @@ public class Read extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loadTable();
+        this.setTitle("Welcome to read data: " + this.user.getUsername());
+        if(this.user.getRol().getName().equals("admin")) {
+            this.buttonDelete.setVisible(true);
+            this.buttonEdit.setVisible(true);            
+        }
+        
+        if(this.user.getRol().getName().equals("user")) {
+            this.buttonDelete.setVisible(false);
+            this.buttonEdit.setVisible(false);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
