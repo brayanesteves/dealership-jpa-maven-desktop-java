@@ -1,7 +1,10 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author Brayan Esteves
@@ -56,6 +59,7 @@ import javax.swing.JFrame;
 public class AdminUser extends JFrame {
     
     private Controller controller;
+    private int        position   = 1;
     
     public AdminUser() {
         initComponents();
@@ -82,6 +86,11 @@ public class AdminUser extends JFrame {
         buttonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         labelTitle.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         labelTitle.setText("Admin User");
@@ -170,6 +179,10 @@ public class AdminUser extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        loadTable();
+    }//GEN-LAST:event_formWindowOpened
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonDelete;
@@ -181,4 +194,36 @@ public class AdminUser extends JFrame {
     private javax.swing.JPanel panelMain;
     private javax.swing.JTable tableUser;
     // End of variables declaration//GEN-END:variables
+
+    private void loadTable() {
+        // Define the model we want the table to have.
+        DefaultTableModel defaultTableModel = new DefaultTableModel() {
+            // Make rows and columns non-editable
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        // We set the column names.
+        String titles[] = {"#", "Id", "User", "Rol"};
+        defaultTableModel.setColumnIdentifiers(titles);
+        
+        // Loading data from the database.
+        List<User> listUsers = this.controller.fetchingUsers();
+        
+        // Iterate through the list and fetch each element in the table.
+        if(listUsers != null) {
+            // Set variable.
+            this.position = 1;
+            for(User user : listUsers) {
+                Object[] object = {this.position, user.getId(), user.getUsername(), user.getRol().getName()};
+                this.position++;
+                
+                defaultTableModel.addRow(object);
+            }
+        }
+        
+        this.tableUser.setModel(defaultTableModel);
+    }
 }

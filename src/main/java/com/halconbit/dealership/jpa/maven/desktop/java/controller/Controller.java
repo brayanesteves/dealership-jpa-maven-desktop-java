@@ -119,5 +119,10 @@ public class Controller {
     public String validateUserWithRolByName(String user) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public List<User> fetchingUsers() {
+        List<User> listUsers = this.persistence.fetchingUsers();
+        return listUsers;     
+    }
     
 }
