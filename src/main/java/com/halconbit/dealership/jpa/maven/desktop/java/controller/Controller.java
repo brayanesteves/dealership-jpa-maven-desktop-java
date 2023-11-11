@@ -130,5 +130,38 @@ public class Controller {
         List<Rol> listRoles = this.persistence.fetchingRoles();
         return listRoles; 
     }
+
+    public void createUser(String username, String password, String rolName) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        
+        Rol rol = new Rol();
+        rol = this.fetchingRol(rolName);
+        
+        if(rol != null) {
+            user.setRol(rol);
+        }
+        
+        int idUser = this.searchLasIdUser();
+        user.setId(idUser + 1);
+        this.persistence.createUser(user);        
+    }
+
+    private Rol fetchingRol(String rolName) {
+        List<Rol> listRoles = this.persistence.fetchingRoles();
+        for(Rol rol : listRoles) {
+            if(rol.getName().equals(rolName)) {
+                return rol;
+            }
+        }
+        return null;
+    }
+
+    private int searchLasIdUser() {
+        List<User> listUsers = this.persistence.fetchingUsers();
+        User       user      = listUsers.get(listUsers.size() - 1);
+        return user.getId();
+    }
     
 }

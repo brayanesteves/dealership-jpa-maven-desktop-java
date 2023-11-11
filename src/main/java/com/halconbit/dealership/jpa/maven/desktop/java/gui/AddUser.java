@@ -3,6 +3,8 @@ package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Rol;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class AddUser extends javax.swing.JFrame {
     
@@ -46,6 +48,11 @@ public class AddUser extends javax.swing.JFrame {
         labelRol.setText("Rol:");
 
         buttonSave.setText("Save");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
 
         buttonClean.setText("Clean");
         buttonClean.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +156,33 @@ public class AddUser extends javax.swing.JFrame {
             this.labelMessage.setText("Not record roles.");
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+        
+        String username =          this.textfieldUsername.getText();
+        String password =          this.passwordfieldPassword.getText();
+        String rol      = (String) this.comboboxRol.getSelectedItem();
+        
+        this.controller.createUser(username, password, rol);
+        
+        showMessage("Save successful.", JOptionPane.INFORMATION_MESSAGE, "Save Successful.");
+                
+        AdminUser adminUser = new AdminUser();
+        adminUser.setVisible(true);
+        adminUser.setLocationRelativeTo(null);
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_buttonSaveActionPerformed
    
+    private void showMessage(String message, int type, String title) {
+        JOptionPane optionPane = new JOptionPane(message);
+        optionPane.setMessageType(type);
+        JDialog dialog = optionPane.createDialog(title);
+        dialog.setAlwaysOnTop(false);
+        dialog.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClean;
     private javax.swing.JButton buttonSave;

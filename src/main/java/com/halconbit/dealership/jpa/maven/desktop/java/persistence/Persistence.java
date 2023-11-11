@@ -59,5 +59,9 @@ public class Persistence {
         // findRolEntities() = "SELECT * FROM `rol`;"
         return this.rolJpaController.findRolEntities();
     }
+
+    public void createUser(User user) {
+        this.userJpaController.create(user);
+    }
     
 }

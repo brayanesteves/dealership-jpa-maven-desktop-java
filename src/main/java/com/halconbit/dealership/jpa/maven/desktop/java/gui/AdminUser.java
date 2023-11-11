@@ -3,7 +3,9 @@ package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -198,11 +200,25 @@ public class AdminUser extends JFrame {
     }//GEN-LAST:event_buttonRefreshDataActionPerformed
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+        
         AddUser addUser = new AddUser(this.controller);
         addUser.setVisible(true);
         addUser.setLocationRelativeTo(null);
+        
+        this.dispose();
+                
+        loadTable();
+        
     }//GEN-LAST:event_buttonAddActionPerformed
 
+    public void showMessage(String message, int type, String title) {
+        JOptionPane optionPane = new JOptionPane(message);
+        optionPane.setMessageType(type);
+        JDialog dialog = optionPane.createDialog(title);
+        dialog.setAlwaysOnTop(false);
+        dialog.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonDelete;
