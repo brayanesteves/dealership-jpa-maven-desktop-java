@@ -120,6 +120,11 @@ public class AdminUser extends JFrame {
 
         buttonRefreshData.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonRefreshData.setText("Refresh data");
+        buttonRefreshData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshDataActionPerformed(evt);
+            }
+        });
 
         buttonExit.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonExit.setText("Exit");
@@ -182,6 +187,10 @@ public class AdminUser extends JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loadTable();
     }//GEN-LAST:event_formWindowOpened
+
+    private void buttonRefreshDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDataActionPerformed
+        loadTable();
+    }//GEN-LAST:event_buttonRefreshDataActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
