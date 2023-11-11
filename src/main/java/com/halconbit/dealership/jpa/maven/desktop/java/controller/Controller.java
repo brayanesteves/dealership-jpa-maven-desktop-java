@@ -1,6 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.controller;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.Rol;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import com.halconbit.dealership.jpa.maven.desktop.java.persistence.Persistence;
 import java.util.List;
@@ -123,6 +124,11 @@ public class Controller {
     public List<User> fetchingUsers() {
         List<User> listUsers = this.persistence.fetchingUsers();
         return listUsers;     
+    }
+
+    public List<Rol> fetchingRoles() {
+        List<Rol> listRoles = this.persistence.fetchingRoles();
+        return listRoles; 
     }
     
 }

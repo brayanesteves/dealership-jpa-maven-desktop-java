@@ -1,9 +1,16 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
-public class AddUser extends javax.swing.JFrame {
+import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.Rol;
+import java.util.List;
 
-    public AddUser() {
+public class AddUser extends javax.swing.JFrame {
+    
+    private Controller controller;
+    
+    public AddUser(Controller controller) {
         initComponents();
+        this.controller = controller;
     }
     
     @SuppressWarnings("unchecked")
@@ -20,8 +27,14 @@ public class AddUser extends javax.swing.JFrame {
         passwordfieldPassword = new javax.swing.JPasswordField();
         buttonSave = new javax.swing.JButton();
         buttonClean = new javax.swing.JButton();
+        labelMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         labelTitle.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         labelTitle.setText("Add User");
@@ -41,6 +54,9 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
+        labelMessage.setFont(new java.awt.Font("Lato", 1, 13)); // NOI18N
+        labelMessage.setForeground(new java.awt.Color(204, 0, 0));
+
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);
         panelMainLayout.setHorizontalGroup(
@@ -54,10 +70,6 @@ public class AddUser extends javax.swing.JFrame {
                         .addGap(150, 150, 150))
                     .addGroup(panelMainLayout.createSequentialGroup()
                         .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelMainLayout.createSequentialGroup()
-                                .addComponent(buttonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(panelMainLayout.createSequentialGroup()
                                     .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -70,8 +82,16 @@ public class AddUser extends javax.swing.JFrame {
                                 .addGroup(panelMainLayout.createSequentialGroup()
                                     .addComponent(labelUsername)
                                     .addGap(18, 18, 18)
-                                    .addComponent(textfieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(textfieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelMainLayout.createSequentialGroup()
+                                .addComponent(buttonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(19, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +114,9 @@ public class AddUser extends javax.swing.JFrame {
                 .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonClean)
                     .addComponent(buttonSave))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(labelMessage)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,11 +136,23 @@ public class AddUser extends javax.swing.JFrame {
     private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCleanActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        List<Rol> listRoles = this.controller.fetchingRoles();
+        if(listRoles != null) {
+            for(Rol rol : listRoles) {
+                this.comboboxRol.addItem(rol.getName());
+            }
+        } else {
+            this.labelMessage.setText("Not record roles.");
+        }
+    }//GEN-LAST:event_formWindowOpened
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClean;
     private javax.swing.JButton buttonSave;
     private javax.swing.JComboBox<String> comboboxRol;
+    private javax.swing.JLabel labelMessage;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelRol;
     private javax.swing.JLabel labelTitle;

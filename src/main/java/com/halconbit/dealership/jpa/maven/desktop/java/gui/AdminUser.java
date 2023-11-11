@@ -111,6 +111,11 @@ public class AdminUser extends JFrame {
 
         buttonAdd.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonAdd.setText("Add");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddActionPerformed(evt);
+            }
+        });
 
         buttonEdit.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonEdit.setText("Edit");
@@ -191,6 +196,12 @@ public class AdminUser extends JFrame {
     private void buttonRefreshDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDataActionPerformed
         loadTable();
     }//GEN-LAST:event_buttonRefreshDataActionPerformed
+
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+        AddUser addUser = new AddUser(this.controller);
+        addUser.setVisible(true);
+        addUser.setLocationRelativeTo(null);
+    }//GEN-LAST:event_buttonAddActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;

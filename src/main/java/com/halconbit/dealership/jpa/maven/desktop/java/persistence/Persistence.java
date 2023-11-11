@@ -1,6 +1,7 @@
 package com.halconbit.dealership.jpa.maven.desktop.java.persistence;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Automobile;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.Rol;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import com.halconbit.dealership.jpa.maven.desktop.java.persistence.exceptions.NonexistentEntityException;
 import java.util.List;
@@ -49,8 +50,14 @@ public class Persistence {
     
     // <USER> //
     public List<User> fetchingUsers() {
+        // findUserEntities() = "SELECT * FROM `user`;"
         return this.userJpaController.findUserEntities();
     }
     // </USER> //
+
+    public List<Rol> fetchingRoles() {
+        // findRolEntities() = "SELECT * FROM `rol`;"
+        return this.rolJpaController.findRolEntities();
+    }
     
 }
