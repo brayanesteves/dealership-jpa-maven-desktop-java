@@ -134,7 +134,9 @@ public class AddUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
-        // TODO add your handling code here:
+        this.textfieldUsername.setText("");
+        this.passwordfieldPassword.setText("");
+        this.comboboxRol.setSelectedIndex(0);
     }//GEN-LAST:event_buttonCleanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
