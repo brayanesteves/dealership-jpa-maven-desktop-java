@@ -195,7 +195,7 @@ public class Read extends javax.swing.JFrame {
             }
         } else {
             showMessage("Not exists data.", JOptionPane.ERROR_MESSAGE, "Not exists data.");
-        }        
+        }
     }//GEN-LAST:event_buttonEditActionPerformed
 
     public void showMessage(String message, int type, String title) {

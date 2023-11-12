@@ -121,6 +121,11 @@ public class AdminUser extends JFrame {
 
         buttonEdit.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonEdit.setText("Edit");
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditActionPerformed(evt);
+            }
+        });
 
         buttonDelete.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonDelete.setText("Delete");
@@ -225,7 +230,7 @@ public class AdminUser extends JFrame {
              */
             if(this.tableUser.getSelectedRow() != -1) {
                 /**
-                 * <b>1</b> is <i>Column</i> <b>1</b> of <b>Customer number</b>
+                 * <b>1</b> is <i>Column</i> <b>1</b> of <b>User number</b>
                  */
                 int id = Integer.parseInt(String.valueOf(this.tableUser.getValueAt(this.tableUser.getSelectedRow(), 1)));                
                 this.controller.deleteUser(id);
@@ -240,6 +245,35 @@ public class AdminUser extends JFrame {
         }        
                 
     }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+        // I check that the table is not empty.
+        if(this.tableUser.getRowCount() > 0) {
+            // I check that a record has been selected.
+            /**
+             * -1 = No selected row
+             */
+            if(this.tableUser.getSelectedRow() != -1) {
+                /**
+                 * <b>1</b> is <i>Column</i> <b>1</b> of <b>User number</b>
+                 */
+                int id    = Integer.parseInt(String.valueOf(this.tableUser.getValueAt(this.tableUser.getSelectedRow(), 1)));
+                
+                EditUser editUser = new EditUser(id);
+                editUser.setVisible(true);
+                editUser.setLocationRelativeTo(null);
+                
+                this.dispose();
+                
+                loadTable();
+                
+            } else {
+                showMessage("Not selected data at update.", JOptionPane.WARNING_MESSAGE, "Not selected data at update.");
+            }
+        } else {
+            showMessage("Not exists data.", JOptionPane.ERROR_MESSAGE, "Not exists data.");
+        }      
+    }//GEN-LAST:event_buttonEditActionPerformed
 
     public void showMessage(String message, int type, String title) {
         JOptionPane optionPane = new JOptionPane(message);
