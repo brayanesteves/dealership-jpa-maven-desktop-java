@@ -63,5 +63,13 @@ public class Persistence {
     public void createUser(User user) {
         this.userJpaController.create(user);
     }
+
+    public void deleteUser(int id) {
+        try {
+            this.userJpaController.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Persistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

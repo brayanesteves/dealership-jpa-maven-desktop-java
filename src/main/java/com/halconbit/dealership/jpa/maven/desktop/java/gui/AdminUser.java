@@ -124,6 +124,11 @@ public class AdminUser extends JFrame {
 
         buttonDelete.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonDelete.setText("Delete");
+        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteActionPerformed(evt);
+            }
+        });
 
         buttonRefreshData.setFont(new java.awt.Font("Lato", 1, 23)); // NOI18N
         buttonRefreshData.setText("Refresh data");
@@ -210,6 +215,31 @@ public class AdminUser extends JFrame {
         loadTable();
         
     }//GEN-LAST:event_buttonAddActionPerformed
+
+    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
+        // I check that the table is not empty.
+        if(this.tableUser.getRowCount() > 0) {
+            // I check that a record has been selected.
+            /**
+             * -1 = No selected row
+             */
+            if(this.tableUser.getSelectedRow() != -1) {
+                /**
+                 * <b>1</b> is <i>Column</i> <b>1</b> of <b>Customer number</b>
+                 */
+                int id = Integer.parseInt(String.valueOf(this.tableUser.getValueAt(this.tableUser.getSelectedRow(), 1)));                
+                this.controller.deleteUser(id);
+                loadTable();
+                showMessage("Delete successful.", JOptionPane.INFORMATION_MESSAGE, "Delete Successful.");
+                
+            } else {
+                showMessage("Not selected data at update.", JOptionPane.WARNING_MESSAGE, "Not selected data at update.");
+            }
+        } else {
+            showMessage("Not exists data.", JOptionPane.ERROR_MESSAGE, "Not exists data.");
+        }        
+                
+    }//GEN-LAST:event_buttonDeleteActionPerformed
 
     public void showMessage(String message, int type, String title) {
         JOptionPane optionPane = new JOptionPane(message);

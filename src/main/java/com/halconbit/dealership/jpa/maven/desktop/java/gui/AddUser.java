@@ -30,6 +30,7 @@ public class AddUser extends javax.swing.JFrame {
         buttonSave = new javax.swing.JButton();
         buttonClean = new javax.swing.JButton();
         labelMessage = new javax.swing.JLabel();
+        buttonBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -64,6 +65,13 @@ public class AddUser extends javax.swing.JFrame {
         labelMessage.setFont(new java.awt.Font("Lato", 1, 13)); // NOI18N
         labelMessage.setForeground(new java.awt.Color(204, 0, 0));
 
+        buttonBack.setText("Back");
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);
         panelMainLayout.setHorizontalGroup(
@@ -77,23 +85,25 @@ public class AddUser extends javax.swing.JFrame {
                         .addGap(150, 150, 150))
                     .addGroup(panelMainLayout.createSequentialGroup()
                         .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(panelMainLayout.createSequentialGroup()
-                                    .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelRol)
-                                        .addComponent(labelPassword))
-                                    .addGap(20, 20, 20)
-                                    .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(passwordfieldPassword)
-                                        .addComponent(comboboxRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(panelMainLayout.createSequentialGroup()
-                                    .addComponent(labelUsername)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(textfieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMainLayout.createSequentialGroup()
+                                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelRol)
+                                    .addComponent(labelPassword))
+                                .addGap(20, 20, 20)
+                                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passwordfieldPassword)
+                                    .addComponent(comboboxRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMainLayout.createSequentialGroup()
+                                .addComponent(labelUsername)
+                                .addGap(18, 18, 18)
+                                .addComponent(textfieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(panelMainLayout.createSequentialGroup()
-                                .addComponent(buttonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(buttonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(19, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -120,7 +130,8 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonClean)
-                    .addComponent(buttonSave))
+                    .addComponent(buttonSave)
+                    .addComponent(buttonBack))
                 .addGap(18, 18, 18)
                 .addComponent(labelMessage)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -174,6 +185,10 @@ public class AddUser extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_buttonSaveActionPerformed
+
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        
+    }//GEN-LAST:event_buttonBackActionPerformed
    
     private void showMessage(String message, int type, String title) {
         JOptionPane optionPane = new JOptionPane(message);
@@ -184,6 +199,7 @@ public class AddUser extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonClean;
     private javax.swing.JButton buttonSave;
     private javax.swing.JComboBox<String> comboboxRol;

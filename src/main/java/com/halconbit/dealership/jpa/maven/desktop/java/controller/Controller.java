@@ -163,5 +163,9 @@ public class Controller {
         User       user      = listUsers.get(listUsers.size() - 1);
         return user.getId();
     }
+
+    public void deleteUser(int id) {
+        this.persistence.deleteUser(id);
+    }
     
 }

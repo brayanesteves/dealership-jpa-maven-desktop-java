@@ -51,28 +51,29 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="labelRol" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelPassword" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="passwordfieldPassword" max="32767" attributes="0"/>
-                                          <Component id="comboboxRol" max="32767" attributes="0"/>
-                                      </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="labelRol" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelPassword" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelUsername" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="textfieldUsername" min="-2" pref="277" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="passwordfieldPassword" max="32767" attributes="0"/>
+                                      <Component id="comboboxRol" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelUsername" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="textfieldUsername" min="-2" pref="277" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="buttonClean" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                  <Component id="buttonSave" min="-2" pref="158" max="-2" attributes="0"/>
+                                  <Component id="buttonBack" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="buttonClean" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="buttonSave" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -110,6 +111,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="buttonClean" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonBack" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="labelMessage" min="-2" max="-2" attributes="0"/>
@@ -181,6 +183,14 @@
               <Color blue="0" green="0" red="cc" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonBack">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBackActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
