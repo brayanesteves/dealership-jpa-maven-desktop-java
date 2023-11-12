@@ -145,7 +145,7 @@ public class Controller {
         
         int idUser = this.searchLasIdUser();
         user.setId(idUser + 1);
-        this.persistence.createUser(user);        
+        this.persistence.createUser(user);
     }
 
     private Rol fetchingRol(String rolName) {
@@ -166,6 +166,24 @@ public class Controller {
 
     public void deleteUser(int id) {
         this.persistence.deleteUser(id);
+    }
+
+    public User fetchingUser(Integer id) {
+        return this.persistence.fetchingUser(id);
+    }
+
+    public void editUser(User user, String username, String password, String rol) {
+        user.setUsername(username);
+        user.setPassword(password);
+        
+        Rol rolSearch = new Rol();
+        rolSearch     = this.fetchingRol(rol);
+        
+        if(rolSearch != null) {
+            user.setRol(rolSearch);
+        }
+        this.persistence.editUser(user);
+        
     }
     
 }

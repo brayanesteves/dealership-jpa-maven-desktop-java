@@ -2,6 +2,7 @@ package com.halconbit.dealership.jpa.maven.desktop.java.gui;
 
 import com.halconbit.dealership.jpa.maven.desktop.java.controller.Controller;
 import com.halconbit.dealership.jpa.maven.desktop.java.logic.Rol;
+import com.halconbit.dealership.jpa.maven.desktop.java.logic.User;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
 public class EditUser extends javax.swing.JFrame {
     
     private Integer id;
+    private User user;
     
     private Controller controller;
     
@@ -17,9 +19,10 @@ public class EditUser extends javax.swing.JFrame {
         this.controller = controller;
     }
 
-    EditUser(int id) {
+    EditUser(Controller controller, int id) {
         initComponents();
-        this.id = id;
+        this.id         = id;
+        this.controller = controller;
     }
     
     @SuppressWarnings("unchecked")
@@ -165,6 +168,9 @@ public class EditUser extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCleanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // Search user.
+        this.user = this.controller.fetchingUser(id);
+        
         List<Rol> listRoles = this.controller.fetchingRoles();
         if(listRoles != null) {
             for(Rol rol : listRoles) {
@@ -173,10 +179,36 @@ public class EditUser extends javax.swing.JFrame {
         } else {
             this.labelMessage.setText("Not record roles.");
         }
+        
+        this.textfieldUsername.setText(user.getUsername());
+        this.passwordfieldPassword.setText(user.getPassword());
+        
+        String rolName = user.getRol().getName();
+        
+        int amountItems = this.comboboxRol.getItemCount();
+        
+        for(int i = 0; i < amountItems; i++) {
+            if(String.valueOf(this.comboboxRol.getItemAt(i)).equals(rolName)) {
+                this.comboboxRol.setSelectedIndex(i);
+            }
+        }
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+        String username =          this.textfieldUsername.getText();
+        String password =          this.passwordfieldPassword.getText();
+        String rol      = (String) this.comboboxRol.getSelectedItem();
         
+        this.controller.editUser(this.user, username, password, rol);
+        
+        showMessage("Update successful.", JOptionPane.INFORMATION_MESSAGE, "Update Successful.");
+                
+        AdminUser adminUser = new AdminUser();
+        adminUser.setVisible(true);
+        adminUser.setLocationRelativeTo(null);
+        
+        this.dispose();
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed

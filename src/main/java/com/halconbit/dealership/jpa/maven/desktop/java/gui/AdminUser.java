@@ -259,7 +259,7 @@ public class AdminUser extends JFrame {
                  */
                 int id    = Integer.parseInt(String.valueOf(this.tableUser.getValueAt(this.tableUser.getSelectedRow(), 1)));
                 
-                EditUser editUser = new EditUser(id);
+                EditUser editUser = new EditUser(this.controller, id);
                 editUser.setVisible(true);
                 editUser.setLocationRelativeTo(null);
                 
