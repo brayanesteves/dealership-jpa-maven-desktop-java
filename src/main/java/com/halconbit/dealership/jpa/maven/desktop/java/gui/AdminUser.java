@@ -233,7 +233,7 @@ public class AdminUser extends JFrame {
                 showMessage("Delete successful.", JOptionPane.INFORMATION_MESSAGE, "Delete Successful.");
                 
             } else {
-                showMessage("Not selected data at update.", JOptionPane.WARNING_MESSAGE, "Not selected data at update.");
+                showMessage("Not selected data at delete.", JOptionPane.WARNING_MESSAGE, "Not selected data at delete.");
             }
         } else {
             showMessage("Not exists data.", JOptionPane.ERROR_MESSAGE, "Not exists data.");
